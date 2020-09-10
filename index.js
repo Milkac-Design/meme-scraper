@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const axios = require("axios");
 const fs = require("fs");
+const Path = require("path");
 
 
 
@@ -9,12 +10,12 @@ const fs = require("fs");
   axios
   .get(mainUrl)
   .then((response) => {
-      dealWithData(response.data);
+      scrapeMemes(response.data);
   })
   .catch((err) => {
       console.log(err);
   });
-  const dealWithData = (html) => {
+  const scrapeMemes = (html) => {
     const $ = cheerio.load(html);
     const urlMeme = $(".meme-img");
     const indexValue1 = 0;
@@ -46,4 +47,167 @@ const fs = require("fs");
 //     else
 // console.log('Append operation complete.');
 // });
+
+async function downloadImage1 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue1].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme1.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+  async function downloadImage2 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue2].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme2.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage3 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue3].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme3.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage4 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue4].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme4.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage5 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue5].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme5.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage6 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue6].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme6.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage7 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue7].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme7.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage8 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue8].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme8.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage9 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue9].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme9.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+
+  async function downloadImage10 () {  
+    const url = `https://memegen.link/${urlMeme[indexValue10].attribs.src}`
+    const path = Path.resolve(__dirname, 'memes', 'meme10.jpg')
+    const writer = fs.createWriteStream(path)
+  
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream'
+    })
+  
+    response.data.pipe(writer)
+
+  }
+  
+  downloadImage1()  
+  downloadImage2()  
+  downloadImage3()  
+  downloadImage4()  
+  downloadImage5()  
+  downloadImage6()  
+  downloadImage7()  
+  downloadImage8()  
+  downloadImage9()  
+  downloadImage10()  
+
   };
+
+  
