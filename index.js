@@ -3,15 +3,19 @@ const axios = require("axios");
 const fs = require("fs");
 const Path = require("path");
 
+const memeFolder = './memes';
 
+if (fs.existsSync(memeFolder)){
+  console.log('meme folder exists')}
+  else {
 fs.mkdir("./memes", function(err) {
     if (err) {
       console.log(err)
     } else {
-      console.log("New directory successfully created.")
+      console.log("memes folder created.")
     }
   })
-
+}
 
   const mainUrl = `https://memegen.link/examples`;
 
