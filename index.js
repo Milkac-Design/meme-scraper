@@ -39,7 +39,7 @@ const scrapeMemes = (html) => {
 for (let i = 0; i < 10; i++) {
    
   async function downloadImage() {  
-        const url = `https://memegen.link/${urlMeme[i].attribs.src}`
+        const url = `https://memegen.link/${urlMeme[i].attribs.src.split(' ')}`
         const path = Path.resolve(__dirname, 'memes', `meme${i}.jpg`)
         const writer = fs.createWriteStream(path)
       
@@ -58,7 +58,8 @@ for (let i = 0; i < 10; i++) {
   downloadImage();
 
     }
-
+    
+console.log(`${urlMeme[1].attribs.src.split([1])}`);
   }
 
 
