@@ -32,24 +32,21 @@ const scrapeMemes = (html) => {
   const $ = cheerio.load(html);
   const urlMeme = $('.meme-img');
 
+  async function downloadImage(i) {
+    const url = `https://memegen.link/${urlMeme[i].attribs.src}`;
+    const urlPath = path.resolve(__dirname, 'memes', `meme${i}.jpg`);
+    const writer = fs.createWriteStream(urlPath);
 
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream',
+    });
 
+    response.data.pipe(writer);
+  }
   for (let i = 0; i < 10; i++) {
-    async function downloadImage() {
-      const url = `https://memegen.link/${urlMeme[i].attribs.src}`;
-      const urlPath = path.resolve(__dirname, 'memes', `meme${i}.jpg`);
-      const writer = fs.createWriteStream(urlPath);
-
-      const response = await axios({
-        url,
-        method: 'GET',
-        responseType: 'stream',
-      });
-
-      response.data.pipe(writer);
-    }
-    downloadImage();
+    downloadImage(i);
   }
   console.log(`Downloaded 10 memes`);
-
 };
